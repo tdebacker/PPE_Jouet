@@ -35,5 +35,10 @@ namespace PTR_PPE_Jouet
         {
             this.libelle = libelle;
         }
+
+        public override string ToString()
+        {
+            return "Libelle : "+getLibelle();
+        }
     }
 }
