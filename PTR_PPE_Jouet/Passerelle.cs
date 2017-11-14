@@ -147,9 +147,10 @@ namespace PTR_PPE_Jouet
             }
             return JouetList;     
         }
-        public static List<Jouet> ToutLesJouetsCommande(List<Jouet> pJouetList)
+        public static List<Jouet> ToutLesJouetsCommande()
         {
             seConnecter();
+            List<Jouet> pJouetList;
             pJouetList = new List<Jouet>();
             SqlCommand maCommande;
             string requeteIdentifiant = "SELECT J.id , J.libelle , J.idCategorie , J.idTrancheAge , C.libelle AS libelleC , T.ageMin , COUNT(E.idJouet) AS nbCom FROM Jouet J JOIN Categorie C ON (J.idCategorie = C.id) JOIN TrancheAge T ON (J.idTrancheAge=T.id) JOIN Enfant E ON (E.idJouet=J.id) GROUP BY E.idJouet,J.id , J.libelle , J.idCategorie , J.idTrancheAge , C.libelle , T.ageMin "; // recupere les informations
@@ -229,7 +230,28 @@ namespace PTR_PPE_Jouet
         }
          * */
 
+        public static List<Categorie> ToutLesJouetsCommande()
+        {
+            seConnecter();
+            ArrayList lesCateQtt;
+            lesCateQtt = new ArrayList();
+            SqlCommand maCommande;
+            string requeteIdentifiant = "SELECT J.idCategorie , C.libelle AS libelleC , COUNT(E.idJouet) AS nbCom FROM Jouet J JOIN Categorie C ON (J.idCategorie = C.id) JOIN TrancheAge T ON (J.idTrancheAge=T.id) JOIN Enfant E ON (E.idJouet=J.id) GROUP BY J.idCategorie, C.libelle"; // recupere les informations
+            maCommande = new SqlCommand(requeteIdentifiant, laConnexion);
+            SqlDataReader Resultat = maCommande.ExecuteReader();
+            while (Resultat.Read()) //Parcours le resultat
+            {
+                int pId = (int)Resultat["idCategorie"];
+                string pLibelle = (string)Resultat["libelle"];
+                int pQtte = (int)Resultat["nbCom"];
 
+                Categorie uneCategorie = new Categorie(pId, pLibelle);
+
+               
+
+            }
+            return lesCateQtt;
+        }
 
     }
 }

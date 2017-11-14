@@ -19,6 +19,7 @@ namespace PTR_PPE_Jouet
             this.libelle = libelle;
         }
 
+
         //get/set
         public int getId()
         {

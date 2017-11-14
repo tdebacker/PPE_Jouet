@@ -31,6 +31,10 @@ namespace PTR_PPE_Jouet
             return id;
         }
 
+        public int getQtte()
+        {
+            return qtte;
+        }
 
         public string getLibelle()
         {
