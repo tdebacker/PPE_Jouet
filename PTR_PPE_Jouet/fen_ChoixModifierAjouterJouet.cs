@@ -16,5 +16,10 @@ namespace PTR_PPE_Jouet
         {
             InitializeComponent();
         }
+
+        private void fen_ChoixModifierAjouterJouet_Load(object sender, EventArgs e)
+        {
+            cb_jouet.DataSource = Passerelle.ToutLesJouets();
+        }
     }
 }
