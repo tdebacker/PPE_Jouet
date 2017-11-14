@@ -126,7 +126,9 @@ namespace PTR_PPE_Jouet
             seConnecter();
             List<Jouet> JouetList = new List<Jouet>();
             SqlCommand maCommande;
-            string requeteIdentifiant = "SELECT J.id , J.libelle , J.idCategorie , J.idTrancheAge , C.libelle , T.ageMin FROM Jouet J JOIN Categorie C ON (J.idCategorie = C.id) JOIN TrancheAge T ON (J.idTrancheAge=T.id)  "; // recupere les informations
+            string requeteIdentifiant = "SELECT J.id , J.libelle , J.idCategorie , J.idTrancheAge , C.libelle , T.ageMin "+
+            "FROM Jouet J JOIN Categorie C ON (J.idCategorie = C.id) JOIN TrancheAge T ON (J.idTrancheAge=T.id) JOIN Enfant E ON (E.idJouet = J.id) "+
+            "WHERE ageMin <= age"; // recupere les informations
             maCommande = new SqlCommand(requeteIdentifiant, laConnexion);
             SqlDataReader Resultat = maCommande.ExecuteReader();
             while (Resultat.Read()) //Parcours le resultat
@@ -137,16 +139,16 @@ namespace PTR_PPE_Jouet
                 int pIdT = (int)Resultat["idTrancheAge"];
                 string pLibelleC = (string)Resultat["libelle"];
                 int pAgeMin = (int)Resultat["ageMin"];
-                int pQtte = 0;
 
                 Categorie uneCategorie = new Categorie(pIdC, pLibelleC);
                 TrancheAge uneTrancheA = new TrancheAge(pIdT, pAgeMin);
-                Jouet unJouet = new Jouet(pId, pLibelle, uneCategorie, uneTrancheA, pQtte);
+                Jouet unJouet = new Jouet(pId, pLibelle, uneCategorie, uneTrancheA);
                 JouetList.Add(unJouet);
 
             }
             return JouetList;     
         }
+
         public static List<Jouet> ToutLesJouetsCommande(List<Jouet> pJouetList)
         {
             seConnecter();
