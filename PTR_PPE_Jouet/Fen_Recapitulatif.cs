@@ -18,12 +18,30 @@ namespace PTR_PPE_Jouet
         }
 
         private void auLoad(object sender, EventArgs e)
-        {
+        { //NB TOTAL 
             int nbTotal ;
             nbTotal = Passerelle.GetnbJouetTotal();
-
             Txt_nbJouetTotal.Text = nbTotal.ToString();
             Txt_nbJouetTotal.ReadOnly = true;
+
+            //TABLEAU PANEL LES JOUETS COMMANDE
+
+            List<Jouet> lesJouetsAcomm = new List<Jouet>();
+            
+            //INSERTION JOUET COMM
+
+         //  Passerelle.ToutLesJouetsCommande(lesJouetsAcomm);
+
+            foreach (Jouet unJ in lesJouetsAcomm)
+            {
+
+                ListViewItem itm = new ListViewItem();
+                //add items to ListView
+
+                itm = new ListViewItem(unJ.ToString());
+
+            }
+
         }
     }
 }
