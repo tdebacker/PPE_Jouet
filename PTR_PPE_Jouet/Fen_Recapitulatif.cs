@@ -27,11 +27,11 @@ namespace PTR_PPE_Jouet
             //TABLEAU PANEL LES JOUETS COMMANDE
 
             List<Jouet> lesJouetsAcomm = new List<Jouet>();
-            List<Jouet> lesJouetsCateg = new List<Jouet>();
+            List<Categorie> lesJouetsCateg = new List<Categorie>();
             //INSERTION JOUET COMM
 
             lesJouetsAcomm=Passerelle.ToutLesJouetsCommande();
-
+            lesJouetsCateg = Passerelle.ToutLesJouetsCat();
 
             foreach (Jouet unJ in lesJouetsAcomm)
             {
@@ -45,13 +45,13 @@ namespace PTR_PPE_Jouet
                 ListV_JouetsAcom.Items.Add(itm);
             }
 
-            foreach (Jouet unJ in lesJouetsAcomm)
+            foreach (Categorie uneC in lesJouetsCateg)
             {
 
                 ListViewItem itm2 = new ListViewItem();
 
-                itm2 = new ListViewItem(unJ.getUneCategorie().getLibelle());           
-                itm2.SubItems.Add(unJ.getQtte().ToString());
+                itm2 = new ListViewItem(uneC.getLibelle().ToString());
+                itm2.SubItems.Add(uneC.getQtte().ToString());
                 ListV_CategorieVente.Items.Add(itm2);
                 
             }

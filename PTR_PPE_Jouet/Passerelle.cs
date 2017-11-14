@@ -172,6 +172,7 @@ namespace PTR_PPE_Jouet
                 pJouetList.Add(unJouet);
 
             }
+            Resultat.Close();
             return pJouetList;
         }
 
@@ -235,21 +236,19 @@ namespace PTR_PPE_Jouet
             seConnecter();
             List<Categorie> lesCateQtt;
             lesCateQtt = new List<Categorie>();
-            SqlCommand maCommande;
+            SqlCommand maCommande2;
             string requeteIdentifiant = "SELECT J.idCategorie , C.libelle AS libelleC , COUNT(E.idJouet) AS nbCom FROM Jouet J JOIN Categorie C ON (J.idCategorie = C.id) JOIN TrancheAge T ON (J.idTrancheAge=T.id) JOIN Enfant E ON (E.idJouet=J.id) GROUP BY J.idCategorie, C.libelle"; // recupere les informations
-            maCommande = new SqlCommand(requeteIdentifiant, laConnexion);
-            SqlDataReader Resultat = maCommande.ExecuteReader();
+            maCommande2 = new SqlCommand(requeteIdentifiant, laConnexion);
+            SqlDataReader Resultat = maCommande2.ExecuteReader();
             while (Resultat.Read()) //Parcours le resultat
             {
                 int pId = (int)Resultat["idCategorie"];
-                string pLibelle = (string)Resultat["libelle"];
+                string pLibelle = (string)Resultat["libelleC"];
                 int pQtte = (int)Resultat["nbCom"];
-
                 Categorie uneCategorie = new Categorie(pId, pLibelle,pQtte);
                 lesCateQtt.Add(uneCategorie);
-               
-
             }
+            Resultat.Close();
             return lesCateQtt;
         }
 

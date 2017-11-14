@@ -34,6 +34,8 @@ namespace PTR_PPE_Jouet
                     {
                         MessageBox.Show("Vous êtes connecté en tant que Responsable ! ");
                         //unEspaceResponsable.Show();
+                        Fen_Recapitulatif uneF = new Fen_Recapitulatif();
+                        uneF.Show();
                     }
                     else
                     {

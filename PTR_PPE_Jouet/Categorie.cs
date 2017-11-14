@@ -39,6 +39,11 @@ namespace PTR_PPE_Jouet
             return libelle;
         }
 
+        public int getQtte()
+        {
+            return qtte;
+        }
+
         public void setLibelle(string libelle)
         {
             this.libelle = libelle;
