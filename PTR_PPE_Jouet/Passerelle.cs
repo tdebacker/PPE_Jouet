@@ -181,8 +181,7 @@ namespace PTR_PPE_Jouet
             return lesEnfants;
         }
 
-        
-        
+             
         public static List<Jouet> ToutLesJouets()
         {
             seConnecter();
