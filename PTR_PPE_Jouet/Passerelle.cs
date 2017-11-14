@@ -81,25 +81,35 @@ namespace PTR_PPE_Jouet
 
         }
 
-        /*
+        
         public static List<Enfant> EnfantsDeEmploye(int idEmploye)
         {
             
             seConnecter();
             List<Enfant> lesEnfants = new List<Enfant>();
             SqlCommand maCommande;
-            string requeteIdentifiant = "SELECT E.id,E.nom,E.prenom,E.age,E.idJouet,E.idEmploye,P.id,P.nom,P.prenom,P.numAdr,P.rue,P.ville,P.cp,P.mail,P.mdp,P.estResponsable,P.aValide FROM Enfant E JOIN Personne P ON (E.idEmploye=P.id) JOIN Jouet J ON(E.idJouet=J.id) WHERE idEmploye ="+idEmploye; // recupere les informations
+            string requeteIdentifiant = "SELECT E.id, E.nom, E.prenom ,E.age, E.idJouet, E.idEmploye, "     //enfant
+            +"P.nom, P.prenom, P.numAdr, P.rue, P.ville, P.cp, P.mail, P.mdp, P.estResponsable, P.aValide, "      //employé
+            +"J.libelle, J.idCategorie, J.idTrancheAge, "     //jouet
+            +"T.ageMin, "     //tranche age
+            +"C.libelle "     //catégorie
+            +"FROM Enfant E JOIN Personne P ON (E.idEmploye=P.id) JOIN Jouet J ON(E.idJouet=J.id) "
+            +"JOIN Categorie C on C.id = J.idCategorie JOIN TrancheAge T on T.id = J.idTrancheAge "
+            +"WHERE idEmploye ="+idEmploye; // recupere les informations
             maCommande = new SqlCommand(requeteIdentifiant, laConnexion);
             SqlDataReader Resultat = maCommande.ExecuteReader();
            
             while (Resultat.Read()) //Parcours le resultat
             {
+                //données enfant
                 int pIdE = (int)Resultat["id"];
                 string pNom = (string)Resultat["nom"];
                 string pPrenom = (string)Resultat["prenom"];
                 int pAge = (int)Resultat["age"];
                 int pIdJ =(int)Resultat["idJouet"];
                 int pIdEm =(int)Resultat["idEmploye"];
+
+                //données employé
                 string pNomEm = (string)Resultat["nom"];
                 string pPrenomEm = (string)Resultat["prenom"];
                 string pnumAdre = (string)Resultat["numAdr"];
@@ -110,16 +120,28 @@ namespace PTR_PPE_Jouet
                 string pMdp = (string)Resultat["mdp"];
                 bool pEstRes = (bool)Resultat["estResponsable"];
                 bool pEstValide = (bool)Resultat["aValide"];
+
+                //données jouet
+                string pLibelleJ = (string)Resultat["libelle"];
+                int pIdCat = (int)Resultat["idCategorie"];
+                int pIdTrancheAge = (int)Resultat["idTrancheAge"];
+
+                //données tranche age
+                int pAgeMin = (int)Resultat["ageMin"];
+
+                //données catégorie
+                string pLibelleCat = (string)Resultat["libelle"];
+                
                 Personne unePersonne = new Personne(pIdEm, pNomEm, pnumAdre, pRue, pVille, pCp, pMail, pMdp, pEstRes, pEstValide);
-                Jouet unJouet = new Jouet(pIdJ,);
-                Enfant unEnfant = new Enfant(pIdE,pNom,pPrenom,pAge,unePersonne,);
+                Jouet unJouet = new Jouet(pIdJ, pLibelleJ, pIdCat, pIdTrancheAge);
+                Enfant unEnfant = new Enfant(pIdE, pNom, pPrenom, pAge, unJouet,unePersonne);
                 //recup les enfants de lemploye
 
             }
             return lesEnfants;
         }
 
-        */
+        
         
         public static List<Jouet> ToutLesJouets()
         {
