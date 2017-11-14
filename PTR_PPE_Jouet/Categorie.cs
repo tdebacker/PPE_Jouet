@@ -11,12 +11,19 @@ namespace PTR_PPE_Jouet
         //attributs
         private int id;
         private string libelle;
+        private int qtte;
 
         //construct
         public Categorie(int id, string libelle)
         {
             this.id = id;
             this.libelle = libelle;
+        }
+        public Categorie(int id, string libelle, int qtte)
+        {
+            this.id = id;
+            this.libelle = libelle;
+            this.qtte = qtte;
         }
 
 
@@ -35,6 +42,11 @@ namespace PTR_PPE_Jouet
         public void setLibelle(string libelle)
         {
             this.libelle = libelle;
+        }
+
+        public override string ToString()
+        {
+            return "Libelle : "+getLibelle();
         }
     }
 }

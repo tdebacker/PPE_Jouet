@@ -230,11 +230,11 @@ namespace PTR_PPE_Jouet
         }
          * */
 
-        public static List<Categorie> ToutLesJouetsCommande()
+        public static List<Categorie> ToutLesJouetsCat()
         {
             seConnecter();
-            ArrayList lesCateQtt;
-            lesCateQtt = new ArrayList();
+            List<Categorie> lesCateQtt;
+            lesCateQtt = new List<Categorie>();
             SqlCommand maCommande;
             string requeteIdentifiant = "SELECT J.idCategorie , C.libelle AS libelleC , COUNT(E.idJouet) AS nbCom FROM Jouet J JOIN Categorie C ON (J.idCategorie = C.id) JOIN TrancheAge T ON (J.idTrancheAge=T.id) JOIN Enfant E ON (E.idJouet=J.id) GROUP BY J.idCategorie, C.libelle"; // recupere les informations
             maCommande = new SqlCommand(requeteIdentifiant, laConnexion);
@@ -245,8 +245,8 @@ namespace PTR_PPE_Jouet
                 string pLibelle = (string)Resultat["libelle"];
                 int pQtte = (int)Resultat["nbCom"];
 
-                Categorie uneCategorie = new Categorie(pId, pLibelle);
-
+                Categorie uneCategorie = new Categorie(pId, pLibelle,pQtte);
+                lesCateQtt.Add(uneCategorie);
                
 
             }

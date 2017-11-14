@@ -25,6 +25,15 @@ namespace PTR_PPE_Jouet
             this.qtte = qtte;
         }
 
+        public Jouet(int id, string libelle, Categorie uneCategorie, TrancheAge uneTrancheAge)
+        {
+            this.id = id;
+            this.libelle = libelle;
+            this.uneCategorie = uneCategorie;
+            this.uneTrancheAge = uneTrancheAge;
+        }
+
+
         //get/set
         public int getId()
         {
@@ -66,6 +75,11 @@ namespace PTR_PPE_Jouet
         public void setUneTrancheAge(TrancheAge uneTrancheAge)
         {
             this.uneTrancheAge = uneTrancheAge;
+        }
+
+        public override string ToString()
+        {
+            return " Nom du Jouet : "+getLibelle()+"\n Categorie : "+getUneCategorie().ToString()+"\n Tranche Age : "+getUneTrancheAge().ToString();
         }
     }
 }
