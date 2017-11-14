@@ -114,19 +114,83 @@ namespace PTR_PPE_Jouet
                 Jouet unJouet = new Jouet(pIdJ,);
                 Enfant unEnfant = new Enfant(pIdE,pNom,pPrenom,pAge,unePersonne,);
                 //recup les enfants de lemploye
+            }
+            return lesEnfants;
+        }
+        */
+
+        public static List<Enfant> EnfantsDeEmploye(int idEmploye)
+        {
+            
+            seConnecter();
+            List<Enfant> lesEnfants = new List<Enfant>();
+            SqlCommand maCommande;
+            string requeteIdentifiant = "SELECT E.id, E.nom, E.prenom ,E.age, E.idJouet, E.idEmploye, "     //enfant
+            +"P.nom, P.prenom, P.numAdr, P.rue, P.ville, P.cp, P.mail, P.mdp, P.estResponsable, P.aValide, "      //employé
+            +"J.libelle, J.idCategorie, J.idTrancheAge, "     //jouet
+            +"T.ageMin, "     //tranche age
+            +"C.libelle "     //catégorie
+            +"FROM Enfant E JOIN Personne P ON (E.idEmploye=P.id) JOIN Jouet J ON(E.idJouet=J.id) "
+            +"JOIN Categorie C on C.id = J.idCategorie JOIN TrancheAge T on T.id = J.idTrancheAge "
+            +"WHERE idEmploye ="+idEmploye; // recupere les informations
+            maCommande = new SqlCommand(requeteIdentifiant, laConnexion);
+            SqlDataReader Resultat = maCommande.ExecuteReader();
+           
+            while (Resultat.Read()) //Parcours le resultat
+            {
+                //données enfant
+                int pIdE = (int)Resultat["id"];
+                string pNom = (string)Resultat["nom"];
+                string pPrenom = (string)Resultat["prenom"];
+                int pAge = (int)Resultat["age"];
+                int pIdJ =(int)Resultat["idJouet"];
+                int pIdEm =(int)Resultat["idEmploye"];
+
+                //données employé
+                string pNomEm = (string)Resultat["nom"];
+                string pPrenomEm = (string)Resultat["prenom"];
+                string pnumAdre = (string)Resultat["numAdr"];
+                string pRue = (string)Resultat["rue"];
+                string pVille = (string)Resultat["ville"];
+                int pCp = (int)Resultat["cp"];
+                string pMail = (string)Resultat["mail"];
+                string pMdp = (string)Resultat["mdp"];
+                bool pEstRes = (bool)Resultat["estResponsable"];
+                bool pEstValide = (bool)Resultat["aValide"];
+
+                //données jouet
+                string pLibelleJ = (string)Resultat["libelle"];
+                int pIdCat = (int)Resultat["idCategorie"];
+                int pIdTrancheAge = (int)Resultat["idTrancheAge"];
+
+                //données tranche age
+                int pAgeMin = (int)Resultat["ageMin"];
+
+                //données catégorie
+                string pLibelleCat = (string)Resultat["libelle"];
+                
+                Personne unePersonne = new Personne(pIdEm, pNomEm, pnumAdre, pRue, pVille, pCp, pMail, pMdp, pEstRes, pEstValide);
+                Categorie uneCat = new Categorie(pIdCat, pLibelleCat);
+                TrancheAge uneTrancheAge = new TrancheAge(pIdTrancheAge, pAgeMin);
+                Jouet unJouet = new Jouet(pIdJ, pLibelleJ, uneCat, uneTrancheAge);
+                Enfant unEnfant = new Enfant(pIdE, pNom, pPrenom, pAge, unePersonne, unJouet);
+
+                lesEnfants.Add(unEnfant);
 
             }
             return lesEnfants;
         }
 
-        */
+        
         
         public static List<Jouet> ToutLesJouets()
         {
             seConnecter();
             List<Jouet> JouetList = new List<Jouet>();
             SqlCommand maCommande;
-            string requeteIdentifiant = "SELECT J.id , J.libelle , J.idCategorie , J.idTrancheAge , C.libelle , T.ageMin FROM Jouet J JOIN Categorie C ON (J.idCategorie = C.id) JOIN TrancheAge T ON (J.idTrancheAge=T.id)  "; // recupere les informations
+            string requeteIdentifiant = "SELECT J.id , J.libelle , J.idCategorie , J.idTrancheAge , C.libelle , T.ageMin "+
+            "FROM Jouet J JOIN Categorie C ON (J.idCategorie = C.id) JOIN TrancheAge T ON (J.idTrancheAge=T.id) JOIN Enfant E ON (E.idJouet = J.id) "+
+            "WHERE ageMin <= age"; // recupere les informations
             maCommande = new SqlCommand(requeteIdentifiant, laConnexion);
             SqlDataReader Resultat = maCommande.ExecuteReader();
             while (Resultat.Read()) //Parcours le resultat
@@ -137,20 +201,19 @@ namespace PTR_PPE_Jouet
                 int pIdT = (int)Resultat["idTrancheAge"];
                 string pLibelleC = (string)Resultat["libelle"];
                 int pAgeMin = (int)Resultat["ageMin"];
-                int pQtte = 0;
 
                 Categorie uneCategorie = new Categorie(pIdC, pLibelleC);
                 TrancheAge uneTrancheA = new TrancheAge(pIdT, pAgeMin);
-                Jouet unJouet = new Jouet(pId, pLibelle, uneCategorie, uneTrancheA, pQtte);
+                Jouet unJouet = new Jouet(pId, pLibelle, uneCategorie, uneTrancheA);
                 JouetList.Add(unJouet);
 
             }
             return JouetList;     
         }
-        public static List<Jouet> ToutLesJouetsCommande()
+
+        public static List<Jouet> ToutLesJouetsCommande(List<Jouet> pJouetList)
         {
             seConnecter();
-            List<Jouet> pJouetList;
             pJouetList = new List<Jouet>();
             SqlCommand maCommande;
             string requeteIdentifiant = "SELECT J.id , J.libelle , J.idCategorie , J.idTrancheAge , C.libelle AS libelleC , T.ageMin , COUNT(E.idJouet) AS nbCom FROM Jouet J JOIN Categorie C ON (J.idCategorie = C.id) JOIN TrancheAge T ON (J.idTrancheAge=T.id) JOIN Enfant E ON (E.idJouet=J.id) GROUP BY E.idJouet,J.id , J.libelle , J.idCategorie , J.idTrancheAge , C.libelle , T.ageMin "; // recupere les informations
@@ -230,28 +293,7 @@ namespace PTR_PPE_Jouet
         }
          * */
 
-        public static List<Categorie> ToutLesJouetsCat()
-        {
-            seConnecter();
-            List<Categorie> lesCateQtt;
-            lesCateQtt = new List<Categorie>();
-            SqlCommand maCommande;
-            string requeteIdentifiant = "SELECT J.idCategorie , C.libelle AS libelleC , COUNT(E.idJouet) AS nbCom FROM Jouet J JOIN Categorie C ON (J.idCategorie = C.id) JOIN TrancheAge T ON (J.idTrancheAge=T.id) JOIN Enfant E ON (E.idJouet=J.id) GROUP BY J.idCategorie, C.libelle"; // recupere les informations
-            maCommande = new SqlCommand(requeteIdentifiant, laConnexion);
-            SqlDataReader Resultat = maCommande.ExecuteReader();
-            while (Resultat.Read()) //Parcours le resultat
-            {
-                int pId = (int)Resultat["idCategorie"];
-                string pLibelle = (string)Resultat["libelle"];
-                int pQtte = (int)Resultat["nbCom"];
 
-                Categorie uneCategorie = new Categorie(pId, pLibelle,pQtte);
-                lesCateQtt.Add(uneCategorie);
-               
-
-            }
-            return lesCateQtt;
-        }
 
     }
 }

@@ -16,5 +16,10 @@ namespace PTR_PPE_Jouet
         {
             InitializeComponent();
         }
+
+        private void Form_Choix_Enfants_Load(object sender, EventArgs e)
+        {
+            cb_enfant
+        }
     }
 }
