@@ -114,6 +114,7 @@
             this.Controls.Add(this.lbl_vosEnfants);
             this.Name = "Form_Choix_Enfants";
             this.Text = "Form_Choix_Enfants";
+            this.Load += new System.EventHandler(this.Form_Choix_Enfants_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
