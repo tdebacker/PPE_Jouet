@@ -133,19 +133,45 @@ namespace PTR_PPE_Jouet
             {
                 int pId = (int)Resultat["id"];
                 string pLibelle = (string)Resultat["libelle"];
-                int pIdC= (int)Resultat["idCategorie"];
+                int pIdC = (int)Resultat["idCategorie"];
                 int pIdT = (int)Resultat["idTrancheAge"];
                 string pLibelleC = (string)Resultat["libelle"];
                 int pAgeMin = (int)Resultat["ageMin"];
-
+                int pQtte = 0;
 
                 Categorie uneCategorie = new Categorie(pIdC, pLibelleC);
-                TrancheAge uneTrancheA = new TrancheAge(pIdT,pAgeMin);
-                Jouet unJouet = new Jouet(pId, pLibelle, uneCategorie, uneTrancheA);
+                TrancheAge uneTrancheA = new TrancheAge(pIdT, pAgeMin);
+                Jouet unJouet = new Jouet(pId, pLibelle, uneCategorie, uneTrancheA, pQtte);
                 JouetList.Add(unJouet);
 
             }
             return JouetList;     
+        }
+        public static List<Jouet> ToutLesJouetsCommande(List<Jouet> pJouetList)
+        {
+            seConnecter();
+            pJouetList = new List<Jouet>();
+            SqlCommand maCommande;
+            string requeteIdentifiant = "SELECT J.id , J.libelle , J.idCategorie , J.idTrancheAge , C.libelle AS libelleC , T.ageMin , COUNT(E.idJouet) AS nbCom FROM Jouet J JOIN Categorie C ON (J.idCategorie = C.id) JOIN TrancheAge T ON (J.idTrancheAge=T.id) JOIN Enfant E ON (E.idJouet=J.id) GROUP BY E.idJouet,J.id , J.libelle , J.idCategorie , J.idTrancheAge , C.libelle , T.ageMin "; // recupere les informations
+            maCommande = new SqlCommand(requeteIdentifiant, laConnexion);
+            SqlDataReader Resultat = maCommande.ExecuteReader();
+            while (Resultat.Read()) //Parcours le resultat
+            {
+                int pId = (int)Resultat["id"];
+                string pLibelle = (string)Resultat["libelle"];
+                int pIdC = (int)Resultat["idCategorie"];
+                int pIdT = (int)Resultat["idTrancheAge"];
+                string pLibelleC = (string)Resultat["libelleC"];
+                int pAgeMin = (int)Resultat["ageMin"];
+                int pQtte = (int)Resultat["nbCom"];
+
+                Categorie uneCategorie = new Categorie(pIdC, pLibelleC);
+                TrancheAge uneTrancheA = new TrancheAge(pIdT, pAgeMin);
+                Jouet unJouet = new Jouet(pId, pLibelle, uneCategorie, uneTrancheA, pQtte);
+                pJouetList.Add(unJouet);
+
+            }
+            return pJouetList;
         }
 
         public static int GetnbJouet(int idJouet)

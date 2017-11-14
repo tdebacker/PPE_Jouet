@@ -13,14 +13,16 @@ namespace PTR_PPE_Jouet
         private string libelle;
         private Categorie uneCategorie;
         private TrancheAge uneTrancheAge;
+        private int qtte;
 
         //construct
-        public Jouet(int id, string libelle, Categorie uneCategorie, TrancheAge uneTrancheAge)
+        public Jouet(int id, string libelle, Categorie uneCategorie, TrancheAge uneTrancheAge, int qtte)
         {
             this.id = id;
             this.libelle = libelle;
             this.uneCategorie = uneCategorie;
             this.uneTrancheAge = uneTrancheAge;
+            this.qtte = qtte;
         }
 
         //get/set
