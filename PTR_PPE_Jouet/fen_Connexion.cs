@@ -39,8 +39,7 @@ namespace PTR_PPE_Jouet
                     else
                     {
                         MessageBox.Show("Vous êtes connecté en tant que Employé ! ");
-                        Form_Choix_Enfants unFormChoixEnfant = new Form_Choix_Enfants(login,mdp);
-                        unFormChoixEnfant.Show();
+                        //unFormChoixEnfant.Show();
                     }
                 }
                 else
