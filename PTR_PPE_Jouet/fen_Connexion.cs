@@ -22,7 +22,6 @@ namespace PTR_PPE_Jouet
             string login, mdp;
          //   EspaceEmploye unEspaceEmploye = new EspaceEmploye();
          //   EspaceResponsable unEspaceResponsable = new EspaceResponsable();
-            fen_ChoixModifierAjouterJouet unChoix = new fen_ChoixModifierAjouterJouet();
 
             login = txtbox_login.Text;
             mdp = txtbox_mdp.Text;
@@ -40,7 +39,8 @@ namespace PTR_PPE_Jouet
                     else
                     {
                         MessageBox.Show("Vous êtes connecté en tant que Employé ! ");
-                        unChoix.Show();
+                        Form_Choix_Enfants unFormChoixEnfant = new Form_Choix_Enfants(login,mdp);
+                        unFormChoixEnfant.Show();
                     }
                 }
                 else

@@ -38,7 +38,7 @@ namespace PTR_PPE_Jouet
 
         public override string ToString()
         {
-            return "Age Minimum : "+getAgeMin();
+            return " "+getAgeMin();
         }
     }
 }
