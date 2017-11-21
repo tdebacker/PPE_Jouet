@@ -211,10 +211,16 @@ namespace PTR_PPE_Jouet
             return JouetList;     
         }
 
+<<<<<<< HEAD
         public static List<Jouet> ToutLesJouetsCommande()
         {
             seConnecter();
             List<Jouet> pJouetList;
+=======
+        public static List<Jouet> ToutLesJouetsCommande(List<Jouet> pJouetList)
+        {
+            seConnecter();
+>>>>>>> c8dd61e260549fd182ddeb91d7836e35c74e6ef4
             pJouetList = new List<Jouet>();
             SqlCommand maCommande;
             string requeteIdentifiant = "SELECT J.id , J.libelle , J.idCategorie , J.idTrancheAge , C.libelle AS libelleC , T.ageMin , COUNT(E.idJouet) AS nbCom FROM Jouet J JOIN Categorie C ON (J.idCategorie = C.id) JOIN TrancheAge T ON (J.idTrancheAge=T.id) JOIN Enfant E ON (E.idJouet=J.id) GROUP BY E.idJouet,J.id , J.libelle , J.idCategorie , J.idTrancheAge , C.libelle , T.ageMin "; // recupere les informations
@@ -236,7 +242,10 @@ namespace PTR_PPE_Jouet
                 pJouetList.Add(unJouet);
 
             }
+<<<<<<< HEAD
             Resultat.Close();
+=======
+>>>>>>> c8dd61e260549fd182ddeb91d7836e35c74e6ef4
             return pJouetList;
         }
 
@@ -295,6 +304,7 @@ namespace PTR_PPE_Jouet
         }
          * */
 
+<<<<<<< HEAD
         public static List<Categorie> ToutLesJouetsCat()
         {
             seConnecter();
@@ -315,6 +325,9 @@ namespace PTR_PPE_Jouet
             Resultat.Close();
             return lesCateQtt;
         }
+=======
+
+>>>>>>> c8dd61e260549fd182ddeb91d7836e35c74e6ef4
 
     }
 }
