@@ -79,7 +79,7 @@ namespace PTR_PPE_Jouet
 
         public override string ToString()
         {
-            return " Nom du Jouet : "+getLibelle()+"\n Categorie : "+getUneCategorie().ToString()+"\n Age Minimum: "+getUneTrancheAge().ToString();
+            return " Nom du Jouet : "+getLibelle();
         }
     }
 }

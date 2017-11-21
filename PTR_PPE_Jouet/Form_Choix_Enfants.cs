@@ -12,9 +12,16 @@ namespace PTR_PPE_Jouet
 {
     public partial class Form_Choix_Enfants : Form
     {
-        public Form_Choix_Enfants()
+        //attributs
+        string unLogin;
+        string unMdp;
+
+        public Form_Choix_Enfants(string login, string mdp)
         {
             InitializeComponent();
+
+            unLogin = login;
+            unMdp = mdp;
         }
 
         private void Form_Choix_Enfants_Load(object sender, EventArgs e)
