@@ -81,6 +81,22 @@ namespace PTR_PPE_Jouet
 
         }
 
+        public static int recupIdEmploye(string mail,string mdp)
+        {
+            seConnecter();
+
+            SqlCommand maCommande;
+
+            string requeteInfoId = "SELECT id FROM Personne WHERE mail = '" + mail + "'"+"AND mdp"+"= '" + mdp + "'";
+
+            maCommande = new SqlCommand(requeteInfoId, laConnexion);
+
+            int Resultat = (int)maCommande.ExecuteScalar();
+
+            return Resultat;
+
+        }
+
         /*
         public static List<Enfant> EnfantsDeEmploye(int idEmploye)
         {
@@ -316,7 +332,6 @@ namespace PTR_PPE_Jouet
             Resultat.Close();
             return lesCateQtt;
         }
-
 
     }
 }
