@@ -12,20 +12,19 @@ namespace PTR_PPE_Jouet
 {
     public partial class Form_Choix_Enfants : Form
     {
-        string lemdp;
-        string lelogin;
-
-        public Form_Choix_Enfants(string login, string mdp)
+        public Form_Choix_Enfants()
         {
             InitializeComponent();
-            lemdp = mdp;
-            lelogin = login;
-            
         }
 
         private void Form_Choix_Enfants_Load(object sender, EventArgs e)
         {
-           
+            
+        }
+
+        private void cb_enfant_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

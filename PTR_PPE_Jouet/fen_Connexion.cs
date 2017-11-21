@@ -55,5 +55,10 @@ namespace PTR_PPE_Jouet
                 MessageBox.Show("Identifiants invalides !" + ex.Message);
             }
         }
+
+        private void fen_Connexion_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
