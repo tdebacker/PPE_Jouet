@@ -54,6 +54,7 @@
             this.cb_enfant.Name = "cb_enfant";
             this.cb_enfant.Size = new System.Drawing.Size(133, 21);
             this.cb_enfant.TabIndex = 1;
+            this.cb_enfant.SelectedIndexChanged += new System.EventHandler(this.cb_enfant_SelectedIndexChanged);
             // 
             // lbl_jouetCorrespondant
             // 

@@ -19,7 +19,12 @@ namespace PTR_PPE_Jouet
 
         private void Form_Choix_Enfants_Load(object sender, EventArgs e)
         {
-            
+            cb_enfant.DataSource = Passerelle.EnfantsDeEmploye(3);  //en dur
+        }
+
+        private void cb_enfant_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
