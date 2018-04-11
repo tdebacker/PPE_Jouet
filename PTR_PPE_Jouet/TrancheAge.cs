@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PTR_PPE_Jouet
 {
-    class TrancheAge
+    public class TrancheAge
     {
         //attributs
         private int id;

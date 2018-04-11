@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PTR_PPE_Jouet
 {
-    class Categorie
+    public class Categorie
     {
         //attributs
         private int id;

@@ -12,9 +12,11 @@ namespace PTR_PPE_Jouet
 {
     public partial class Fen_Recapitulatif : Form
     {
-        public Fen_Recapitulatif()
+        Form fAppel;
+        public Fen_Recapitulatif(Form pF)
         {
             InitializeComponent();
+            fAppel = pF;
         }
 
         private void auLoad(object sender, EventArgs e)
@@ -56,6 +58,23 @@ namespace PTR_PPE_Jouet
                 
             }
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            fAppel.Show();
+            this.Close();
+        }
+
+        private void OuvertureMenu(object sender, EventArgs e)
+        {
+            Fen_MenuGestion formGestion = new Fen_MenuGestion();
+            formGestion.Show();
+        }
+
+        private void Fen_Recapitulatif_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

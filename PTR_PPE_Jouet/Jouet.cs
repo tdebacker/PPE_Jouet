@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PTR_PPE_Jouet
 {
-    class Jouet
+    public class Jouet
     {
         //attributs
         private int id;
@@ -77,9 +77,42 @@ namespace PTR_PPE_Jouet
             this.uneTrancheAge = uneTrancheAge;
         }
 
+        public String Infos
+        {
+            get { return libelle + " - " + uneCategorie.getLibelle(); }
+        }
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+
+
         public override string ToString()
         {
-            return " Nom du Jouet : "+getLibelle();
+            return libelle+" - "+uneCategorie.getLibelle();
+        }
+
+        public TrancheAge TrancheAge
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+
+        public Categorie Categorie
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
         }
     }
 }

@@ -20,8 +20,6 @@ namespace PTR_PPE_Jouet
         private void btn_connexion_Click(object sender, EventArgs e)
         {
             string login, mdp;
-         //   EspaceEmploye unEspaceEmploye = new EspaceEmploye();
-         //   EspaceResponsable unEspaceResponsable = new EspaceResponsable();
 
             login = txtbox_login.Text;
             mdp = txtbox_mdp.Text;
@@ -31,22 +29,15 @@ namespace PTR_PPE_Jouet
                 {
                     if (Passerelle.EstResponsable(login) == true)
                     {
-                        MessageBox.Show("Vous êtes connecté en tant que Responsable ! ");
-                        //unEspaceResponsable.Show();
-                        Fen_Recapitulatif uneF = new Fen_Recapitulatif();
+                        Fen_Recapitulatif uneF = new Fen_Recapitulatif(this);
                         uneF.Show();
+                        this.Hide();
                     }
                     else
                     {
-                        MessageBox.Show("Vous êtes connecté en tant que Employé ! ");
-
-                        //unFormChoixEnfant.Show();
-
-                        Form_Choix_Enfants unFormChoixEnfant = new Form_Choix_Enfants(login,mdp);
-                        //unFormChoixEnfant.Show();
-                        fen_ChoixModifierAjouterJouet unFormAjoutModif = new fen_ChoixModifierAjouterJouet();
-                        unFormAjoutModif.Show();
-
+                        Form_Choix_Enfants unFormChoixEnfant = new Form_Choix_Enfants(login,mdp, this);
+                        unFormChoixEnfant.Show();
+                        this.Hide();
                     }
                 }
                 else
@@ -56,13 +47,18 @@ namespace PTR_PPE_Jouet
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Identifiants invalides !" + ex.Message);
+                MessageBox.Show("Connexion impossible! \nVeuillez vérifier que vous êtes bien connecté au réseau.");
             }
         }
 
         private void fen_Connexion_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void fen_Connexion_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

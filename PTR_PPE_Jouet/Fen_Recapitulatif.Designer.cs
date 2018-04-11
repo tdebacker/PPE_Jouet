@@ -39,10 +39,13 @@
             this.ListV_CategorieVente = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnQuitter = new System.Windows.Forms.Button();
+            this.btn_Gestion = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ListV_JouetsAcom
             // 
+            this.ListV_JouetsAcom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.ListV_JouetsAcom.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.idJouet,
             this.libelle,
@@ -79,7 +82,7 @@
             // Lbl_NbtotalJ
             // 
             this.Lbl_NbtotalJ.AutoSize = true;
-            this.Lbl_NbtotalJ.Location = new System.Drawing.Point(135, 202);
+            this.Lbl_NbtotalJ.Location = new System.Drawing.Point(123, 198);
             this.Lbl_NbtotalJ.Name = "Lbl_NbtotalJ";
             this.Lbl_NbtotalJ.Size = new System.Drawing.Size(108, 13);
             this.Lbl_NbtotalJ.TabIndex = 7;
@@ -87,10 +90,13 @@
             // 
             // Txt_nbJouetTotal
             // 
-            this.Txt_nbJouetTotal.Location = new System.Drawing.Point(254, 195);
+            this.Txt_nbJouetTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.Txt_nbJouetTotal.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.Txt_nbJouetTotal.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.Txt_nbJouetTotal.Location = new System.Drawing.Point(237, 195);
             this.Txt_nbJouetTotal.Name = "Txt_nbJouetTotal";
             this.Txt_nbJouetTotal.ReadOnly = true;
-            this.Txt_nbJouetTotal.Size = new System.Drawing.Size(60, 20);
+            this.Txt_nbJouetTotal.Size = new System.Drawing.Size(77, 20);
             this.Txt_nbJouetTotal.TabIndex = 6;
             this.Txt_nbJouetTotal.TabStop = false;
             this.Txt_nbJouetTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -106,6 +112,7 @@
             // 
             // ListV_CategorieVente
             // 
+            this.ListV_CategorieVente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.ListV_CategorieVente.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
@@ -127,11 +134,33 @@
             this.columnHeader2.Text = "QUANTITE";
             this.columnHeader2.Width = 73;
             // 
+            // btnQuitter
+            // 
+            this.btnQuitter.Location = new System.Drawing.Point(55, 248);
+            this.btnQuitter.Name = "btnQuitter";
+            this.btnQuitter.Size = new System.Drawing.Size(83, 35);
+            this.btnQuitter.TabIndex = 10;
+            this.btnQuitter.Text = "Quitter";
+            this.btnQuitter.UseVisualStyleBackColor = true;
+            this.btnQuitter.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btn_Gestion
+            // 
+            this.btn_Gestion.Location = new System.Drawing.Point(163, 248);
+            this.btn_Gestion.Name = "btn_Gestion";
+            this.btn_Gestion.Size = new System.Drawing.Size(87, 36);
+            this.btn_Gestion.TabIndex = 11;
+            this.btn_Gestion.Text = "Gestion";
+            this.btn_Gestion.UseVisualStyleBackColor = true;
+            this.btn_Gestion.Click += new System.EventHandler(this.OuvertureMenu);
+            // 
             // Fen_Recapitulatif
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(537, 306);
+            this.Controls.Add(this.btn_Gestion);
+            this.Controls.Add(this.btnQuitter);
             this.Controls.Add(this.ListV_CategorieVente);
             this.Controls.Add(this.ListV_JouetsAcom);
             this.Controls.Add(this.Lbl_NbtotalJ);
@@ -139,6 +168,7 @@
             this.Controls.Add(this.Lbl_recap);
             this.Name = "Fen_Recapitulatif";
             this.Text = "Fen_Recapitulatif";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Fen_Recapitulatif_FormClosing);
             this.Load += new System.EventHandler(this.auLoad);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -158,6 +188,8 @@
         private System.Windows.Forms.ListView ListV_CategorieVente;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.Button btnQuitter;
+        private System.Windows.Forms.Button btn_Gestion;
 
     }
 }

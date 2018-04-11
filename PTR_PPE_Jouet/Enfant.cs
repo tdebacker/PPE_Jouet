@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PTR_PPE_Jouet
 {
-    class Enfant
+    public class Enfant
     {
         //attributs
         private int id;
@@ -74,6 +74,50 @@ namespace PTR_PPE_Jouet
         public void setUnEmploye(Personne unEmploye)
         {
             this.unEmploye = unEmploye;
+        }
+
+        public Jouet getUnJouet()
+        {
+            return unJouet;
+        }
+
+        public void setUnJouet(Jouet jouet)
+        {
+            this.unJouet = jouet;
+        }
+
+        //propriété
+        public string Infos
+        {
+            get { return nom+" "+prenom; }
+        }
+
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+
+        public Jouet Jouet
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+
+        public Personne Employe
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
         }
     }
 }

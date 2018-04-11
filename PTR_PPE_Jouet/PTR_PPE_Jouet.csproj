@@ -58,10 +58,22 @@
     <Compile Include="fen_Connexion.Designer.cs">
       <DependentUpon>fen_Connexion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fen_GestionEmploye.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fen_GestionEmploye.designer.cs">
+      <DependentUpon>Fen_GestionEmploye.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fen_MenuGestion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fen_MenuGestion.designer.cs">
+      <DependentUpon>Fen_MenuGestion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Fen_Recapitulatif.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Fen_Recapitulatif.Designer.cs">
+    <Compile Include="Fen_Recapitulatif.designer.cs">
       <DependentUpon>Fen_Recapitulatif.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_Choix_Enfants.cs">
@@ -81,6 +93,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fen_Connexion.resx">
       <DependentUpon>fen_Connexion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fen_GestionEmploye.resx">
+      <DependentUpon>Fen_GestionEmploye.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fen_MenuGestion.resx">
+      <DependentUpon>Fen_MenuGestion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fen_Recapitulatif.resx">
       <DependentUpon>Fen_Recapitulatif.cs</DependentUpon>

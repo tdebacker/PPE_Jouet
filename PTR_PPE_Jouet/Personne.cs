@@ -6,25 +6,27 @@ using System.Threading.Tasks;
 
 namespace PTR_PPE_Jouet
 {
-    class Personne
+    public class Personne
     {
         //attributs
         private int id;
         private string nom;
+        private string prenom;
         private string numAdr;
         private string rue;
         private string ville;
-        private int cp;
+        private string cp;
         private string mail;
         private string mdp;
         private bool estResponsable;
         private bool aValide;
 
         //construct
-        public Personne(int id, string nom, string numAdr, string rue, string ville, int cp, string mail, string mdp, bool estResponsable, bool aValide)
+        public Personne(int id, string nom, string prenom, string numAdr, string rue, string ville, string cp, string mail, string mdp, bool estResponsable, bool aValide)
         {
             this.id = id;
             this.nom = nom;
+            this.prenom = prenom;
             this.numAdr = numAdr;
             this.rue = rue;
             this.ville = ville;
@@ -50,6 +52,16 @@ namespace PTR_PPE_Jouet
         public void setNom(string nom)
         {
             this.nom = nom;
+        }
+
+        public string getPrenom()
+        {
+            return prenom;
+        }
+
+        public void setPrenom(string prenom)
+        {
+            this.prenom = prenom;
         }
 
 
@@ -86,12 +98,12 @@ namespace PTR_PPE_Jouet
         }
 
 
-        public int getCp()
+        public string getCp()
         {
             return cp;
         }
 
-        public void getCp(int cp)
+        public void setCp(string cp)
         {
             this.cp = cp;
         }
@@ -138,6 +150,17 @@ namespace PTR_PPE_Jouet
         public void setAValide(bool aValide)
         {
             this.aValide = aValide;
+        }
+
+        public String Infos
+        {
+            get { return prenom + " " + nom; }
+        }
+
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
         }
     }
 }

@@ -116,6 +116,7 @@
             this.Controls.Add(this.lbl_login);
             this.Name = "fen_Connexion";
             this.Text = "Application Jouet";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.fen_Connexion_FormClosing);
             this.Load += new System.EventHandler(this.fen_Connexion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picbox_logo)).EndInit();
             this.ResumeLayout(false);

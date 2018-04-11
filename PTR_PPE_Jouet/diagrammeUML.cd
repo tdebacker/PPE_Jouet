@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="PTR_PPE_Jouet.Categorie">
+    <Position X="8.75" Y="4.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AgAAAEAAAAAAAAgEAAAAAAAAAAAAAAAAgAAAAAAAggA=</HashCode>
+      <FileName>Categorie.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PTR_PPE_Jouet.Enfant">
+    <Position X="3.25" Y="0.75" Width="1.5" />
+    <Members>
+      <Field Name="unEmploye" Hidden="true" />
+      <Field Name="unJouet" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AgACIEABAAAwUACAAAAAIAAAAAABIgAUAAAIAgAgAgA=</HashCode>
+      <FileName>Enfant.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Jouet" />
+      <Property Name="Employe" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="PTR_PPE_Jouet.Jouet">
+    <Position X="6" Y="1.25" Width="1.5" />
+    <Members>
+      <Field Name="uneCategorie" Hidden="true" />
+      <Field Name="uneTrancheAge" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="TrancheAge" Type="PTR_PPE_Jouet.TrancheAge" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.5" Y="2.812" />
+        <Point X="7.875" Y="2.812" />
+        <Point X="7.875" Y="2.278" />
+        <Point X="8.75" Y="2.278" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Categorie" Type="PTR_PPE_Jouet.Categorie" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.75" Y="3.641" />
+        <Point X="6.75" Y="5.25" />
+        <Point X="8.75" Y="5.25" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AgACAUAAAAAgAAgkEAECAQAAAAAAAAAAgAACAAAAggA=</HashCode>
+      <FileName>Jouet.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="TrancheAge" />
+      <Property Name="Categorie" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="PTR_PPE_Jouet.Passerelle">
+    <Position X="11.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABADEAAAEARIAAIABAAIACgFAEEAAgAAAoCAAAAQAA=</HashCode>
+      <FileName>Passerelle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PTR_PPE_Jouet.Personne">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AgACIhAgAAMgAAAAAEASIAABEAAgKgICAIACAgZgAiE=</HashCode>
+      <FileName>Personne.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PTR_PPE_Jouet.TrancheAge">
+    <Position X="8.75" Y="1.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAQAQAAEAAgA=</HashCode>
+      <FileName>TrancheAge.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
